@@ -15,11 +15,6 @@
                 </thead>
                 <tbody>
                 @foreach ($books as $book)
-                <tr>
-                    <td>{{$book->title}}</td>
-                    <td>{{$book->isbn}}</td>
-                    <td>{{$book->description}}</td>
-                </tr>
                 
                 @endforeach
                 <p>This is me</p>
