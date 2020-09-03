@@ -23,6 +23,7 @@
                 
                 @endforeach
                 <p>This is me</p>
+                <p>This is me</p>
                 </tbody>
             </table>
         </div>
