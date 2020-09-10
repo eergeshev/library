@@ -15,6 +15,15 @@
                     <input type="text" name="description">
                 </div>
                 <div>
+                    <label>Book language</label>
+                    <select name="language_id" id="languages">
+                        @foreach ($languages as $language)
+                            <option value="{{$language->id}}" >{{$language->name}}</option>
+                        @endforeach
+                      </select>
+                    
+                </div>
+                <div>
                     <label>Book isbn</label>
                     <input type="text" name="isbn">
                 </div>

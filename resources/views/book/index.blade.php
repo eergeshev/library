@@ -12,14 +12,24 @@
                     <th>Title</th>
                     <th>ISBN</th>
                     <th>Description</th>
+                    <th>Language</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                 </thead>
                 <tbody>
                 @foreach ($books as $book)
+                <tr>
+                    <td>{{$book->title}}</td>
+                    <td>{{$book->isbn}}</td>
+                    <td>{{$book->description}}</td>
+                    <td>{{$book->languages->name}}</td>
+                    <td><a href="book/{{ $book->id }}/edit">Edit</a></td>
+                    <td><a href="book/{{$book->id }}">Delete</a></td>
+                </tr>
                 
                 @endforeach
                 <p>This is me</p>
-                <p>This is me</p>
-                <p>This is me</p>
+               
                 </tbody>
             </table>
         </div>
