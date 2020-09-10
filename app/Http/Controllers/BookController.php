@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Book;
+use App\Language;
 use Illuminate\Http\Request;
 
 
@@ -22,24 +23,20 @@ class BookController extends Controller
 
     public function store()
     {
-        
+        $book = new Book();
         $data = request()->validate([
             'title' => 'required',
             'description' => 'required',
             'isbn' => 'required',
-            
+            'language_id'=>'required',
         ]);
-        
-        // $form_data = array(
-        //     'title' => $data['title'],
-        //     'isbn' => $data['isbn'],
-        //     'description' => $data['description'],
-        //     'language_id' =>$data['language_id'],
-        // );
-
-       
-
-        Book::create($data);
+        $lang = \App\Language::find($data['language_id']);
+        $book->title = $data['title'];
+        $book->isbn = $data['isbn'];
+        $book->description = $data['description'];       
+        $book->save();
+        $book->languages()->attach($lang);
+        dd($book, $lang);
 
         return redirect('/book');
 

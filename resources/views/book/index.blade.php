@@ -22,7 +22,14 @@
                     <td>{{$book->title}}</td>
                     <td>{{$book->isbn}}</td>
                     <td>{{$book->description}}</td>
-                    <td>{{$book->languages->name}}</td>
+
+                    <td>
+                        <ul>
+                            @foreach($book->languages as $b)
+                            <li>{{$b->name}}</li>
+                            @endforeach
+                        </ul>
+                    </td>
                     <td><a href="book/{{ $book->id }}/edit">Edit</a></td>
                     <td><a href="book/{{$book->id }}">Delete</a></td>
                 </tr>

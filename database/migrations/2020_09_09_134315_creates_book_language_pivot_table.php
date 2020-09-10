@@ -14,9 +14,8 @@ class CreatesBookLanguagePivotTable extends Migration
     public function up()
     {
         Schema::create('book_language', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('book_id');
-            $table->unsignedBigInteger('language_id');
+            $table->foreignId('book_id')->constrained();
+            $table->foreignId('language_id')->constrained();
             $table->timestamps();
         });
     }
