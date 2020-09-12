@@ -21,24 +21,25 @@ class BookController extends Controller
         return view('book.create', compact('languages'));
     }
 
-    public function store()
+    public function store(Request $request)
     {
+        $lang_ids = $request->input('languages');
+        $languages = \App\Language::find($lang_ids);
+
         $book = new Book();
         $data = request()->validate([
             'title' => 'required',
             'description' => 'required',
             'isbn' => 'required',
-            'language_id'=>'required',
         ]);
-        $lang = \App\Language::find($data['language_id']);
+
         $book->title = $data['title'];
         $book->isbn = $data['isbn'];
-        $book->description = $data['description'];       
+        $book->description = $data['description'];
         $book->save();
-        $book->languages()->attach($lang);
-        dd($book, $lang);
+        $book->languages()->attach($languages);
 
-        return redirect('/book');
+        return redirect('/books');
 
     }
 
@@ -66,7 +67,7 @@ class BookController extends Controller
 
         $dat_update->update($form_data);
 
-        return redirect('/book');
+        return redirect('/books');
 
     }
 
@@ -78,6 +79,11 @@ class BookController extends Controller
 
         return redirect()->back();
     }
+
+  
+
+        
+    
 
 
 

@@ -20,9 +20,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('/book', 'BookController@index');
+Route::get('/books', 'BookController@index');
 Route::get('book/create', 'BookController@create');
-Route::post('book', 'BookController@store');
+Route::post('books', 'BookController@store');
 Route::get('book/{id}/edit', 'BookController@edit');
 Route::put('book/{id}', 'BookController@update');
 
@@ -31,6 +31,8 @@ Route::get('book/{id}', 'BookController@delete');
 Route::get('/language', 'LanguageController@index');
 Route::post('/language', 'LanguageController@store');
 Route::get('/language/{id}', 'LanguageController@destroy');
+
+Route::get('/languages', 'BookController@languages');
 
 Route::get('/p', function () {
     return view('welcome');

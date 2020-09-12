@@ -16,10 +16,17 @@
 
         @foreach($languages as $lang)
 
-        <p><h4>{{$lang->name}}</h4> <a href="language/{{$lang->id}}">delete</a></p>
+            <div>
+                <h4>{{$lang->name}}</h4>
+                {{-- <a href="language/{{$lang->id}}">delete</a> --}}
+                <ul>
+                    @foreach($lang->books as $b)
+                        <li>{{$b->title}}</li>
+                    @endforeach
+                </ul>
+            </div>
 
-        <hr>
-        
+            <hr>
 
         @endforeach
 
