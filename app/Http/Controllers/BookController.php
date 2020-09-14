@@ -18,7 +18,8 @@ class BookController extends Controller
     public function create()
     {
         $languages = \App\Language::all();
-        return view('book.create', compact('languages'));
+        $genres = \App\Genre::all();
+        return view('book.create', compact('languages','genres'));
     }
 
     public function store(Request $request)
@@ -26,6 +27,10 @@ class BookController extends Controller
         $lang_ids = $request->input('languages');
         $languages = \App\Language::find($lang_ids);
 
+        $genre_ids =  $request->input('genres');
+        $genres = \App\Genre::find($genre_ids);
+
+        
         $book = new Book();
         $data = request()->validate([
             'title' => 'required',
@@ -38,6 +43,7 @@ class BookController extends Controller
         $book->description = $data['description'];
         $book->save();
         $book->languages()->attach($languages);
+        $book->genres()->attach($genres);
 
         return redirect('/books');
 

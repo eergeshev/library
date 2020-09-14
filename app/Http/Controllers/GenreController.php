@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Language;
+use App\Genre;
 use Illuminate\Http\Request;
 
-class LanguageController extends Controller
+class GenreController extends Controller
 {
-
     public function index()
     {
-        $languages = Language::all();
+        $genres = Genre::all();
 
-        return view('language.index', compact('languages'));
+        return view('genre.index', compact('genres'));
 
     }
 
@@ -21,14 +20,14 @@ class LanguageController extends Controller
         $data = request()->validate([
             'name'=>'required'
         ]);
-
-        language::create($data);
-        return redirect('/language');
+        
+        Genre::create($data);
+        return redirect('/genre');
     }
 
     public function destroy($id)
     {
-        $data = Language::findOrFail($id);
+        $data = Genre::findOrFail($id);
         $data->delete();
 
         return redirect()->back();

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatesBookLanguagePivotTable extends Migration
+class CreateGenresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreatesBookLanguagePivotTable extends Migration
      */
     public function up()
     {
-        Schema::create('book_language', function (Blueprint $table) {
-            $table->foreignId('book_id')->constrained();
-            $table->foreignId('language_id')->constrained();
-            
-            
+        Schema::create('genres', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreatesBookLanguagePivotTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('book_language');
+        Schema::dropIfExists('genres');
     }
 }

@@ -32,7 +32,9 @@ Route::get('/language', 'LanguageController@index');
 Route::post('/language', 'LanguageController@store');
 Route::get('/language/{id}', 'LanguageController@destroy');
 
-Route::get('/languages', 'BookController@languages');
+Route::get('/genre', 'GenreController@index');
+Route::post('/genre', 'GenreController@store');
+Route::get('/genre/{id}', 'GenreController@destroy');
 
 Route::get('/p', function () {
     return view('welcome');

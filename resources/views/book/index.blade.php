@@ -13,6 +13,7 @@
                     <th>ISBN</th>
                     <th>Description</th>
                     <th>Language</th>
+                    <th>Genres</th>
                     <th>Edit</th>
                     <th>Delete</th>
                 </thead>
@@ -26,6 +27,14 @@
                     <td>
                         <ul>
                             @foreach($book->languages as $b)
+                            <li>{{$b->name}}</li>
+                            @endforeach
+                        </ul>
+                    </td>
+                   
+                    <td>
+                        <ul>
+                            @foreach($book->genres as $b)
                             <li>{{$b->name}}</li>
                             @endforeach
                         </ul>

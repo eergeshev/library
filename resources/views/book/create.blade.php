@@ -13,6 +13,21 @@
     }
     }
 </script>
+
+<script>
+    var expanded = false;
+
+    function showCheckboxess() {
+    var checkboxes1 = document.getElementById("checkboxes1");
+    if (!expanded) {
+        checkboxes1.style.display = "block";
+        expanded = true;
+    } else {
+        checkboxes1.style.display = "none";
+        expanded = false;
+    }
+    }
+</script>
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -55,6 +70,28 @@
                   </div>
 
                 <div>
+                
+                <hr>
+
+                <div class="multiselect">
+                    <div class="selectBox" onclick="showCheckboxess()">
+                        <select>
+                        <option>Select an option</option>
+                        </select>
+                        <div class="overSelect"></div>
+                    </div>
+
+                    <div id="checkboxes1">
+                    @foreach($genres as $genre)
+                        <label for="{{ $genre->id}}">
+                        <input type="checkbox" name='genres[]' value ="{{ $genre->id }}"  id="{{ $genre->id }}"/> {{ $genre->name }} </label>
+                    
+                    @endforeach
+                    </div>
+                </div>
+
+                <div>
+
                     <label>Book isbn</label>
                     <input type="text" name="isbn">
                 </div>
