@@ -5,25 +5,36 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+        <div>
+            <h2>Add new Language</h2>
+        </div>
+            
           <form action="/language" method="post">
             @csrf
             <input type="text" name='name'>
             <button>Submit</button>
 
-        </form>
+          </form>
 
         <hr>
 
+        <div class="text-align-center">
+            <h3>List of languages</h3>
+        </div>
+        <hr>
         @foreach($languages as $lang)
 
-            <div>
+            <div class="d-flex pl-3">
                 <h4>{{$lang->name}}</h4>
-                {{-- <a href="language/{{$lang->id}}">delete</a> --}}
-                <ul>
-                    @foreach($lang->books as $b)
-                        <li>{{$b->title}}</li>
-                    @endforeach
-                </ul>
+                
+                <div>
+                    <ul>
+                        @foreach($lang->books as $b)
+                            <li>{{$b->title}}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                <a href="language/{{$lang->id}}" style="margin-left: 100px">delete</a>
             </div>
 
             <hr>

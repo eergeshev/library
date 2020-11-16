@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use App\Loan;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -36,4 +36,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function book_instance()
+    {
+        return $this->belongsToMany(Loan::class);
+    }
+
+
 }

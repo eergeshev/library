@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBookGenreTable extends Migration
+class CreateLoansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateBookGenreTable extends Migration
      */
     public function up()
     {
-        Schema::create('book_genre', function (Blueprint $table) {
+        Schema::create('loans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('book_id')->constrained();
-            $table->foreignId('genre_id')->constrained();
+            $table->date('due_back')->nullable();
+            $table->string('status');
+            $table->unsignedBigInteger('book_id');
 
             $table->timestamps();
         });
@@ -29,6 +30,6 @@ class CreateBookGenreTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('book_genre');
+        Schema::dropIfExists('loans');
     }
 }

@@ -33,20 +33,27 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div>
-                <h2>Add new book</h2>
+                <h2>Add new Auhthor</h2>
             </div>
             <hr>
-            <form action="/books" method="POST">
+            <form action="/authors" method="POST">
                 @csrf
                                 <div>
-                    <label>Book title</label>
-                    <input type="text" name="title">
+                    <label>Author name</label>
+                    <input type="text" name="name">
                 </div>
                 <div>
-                    <label>Book description</label>
-                    <input type="text" name="description">
+                    <label>BirthDate</label>
+                    <input type="date" name="birth_date">
+
+                    <label>DeadDate</label>
+                    <input type="date" name="dead_date">
                 </div>
-             
+                <div>
+                    <label>Bio</label>
+                    <input type="text" name="bio">
+
+                </div>
                 <div class="multiselect">
                     <div class="selectBox" onclick="showCheckboxes()">
                       <select>
@@ -56,41 +63,20 @@
                     </div>
 
                     <div id="checkboxes">
-                    @foreach($languages as $language)
-                      <label for="{{ $language->id}}">
-                        <input type="checkbox" name='languages[]' value ="{{ $language->id }}"  id="{{ $language->id }}"/> {{ $language->name }} </label>
+                    @foreach($books as $book)
+                      <label for="{{ $book->id}}">
+                        <input type="checkbox" name='books[]' value ="{{ $book->id }}"  id="{{ $book->id }}"/> {{ $book->title }} </label>
                  
                     @endforeach
                     </div>
                   </div>
 
-                <div>
                 
-                <hr>
 
-                <div class="multiselect">
-                    <div class="selectBox" onclick="showCheckboxess()">
-                        <select>
-                        <option>Select an option</option>
-                        </select>
-                        <div class="overSelect"></div>
-                    </div>
-
-                    <div id="checkboxes1">
-                    @foreach($genres as $genre)
-                        <label for="{{ $genre->id}}">
-                        <input type="checkbox" name='genres[]' value ="{{ $genre->id }}"  id="{{ $genre->id }}"/> {{ $genre->name }} </label>
-                    
-                    @endforeach
-                    </div>
-                </div>
-
-                <div>
-
-                    <label>Book isbn</label>
-                    <input type="text" name="isbn">
-                </div>
+                
+                
                 <input type="submit" value="Submit">
+            </div>
             </form>
         </div>
     </div>

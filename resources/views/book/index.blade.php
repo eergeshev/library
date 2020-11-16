@@ -6,8 +6,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <a href="/book/create">create book</a>
+            <hr>
+            <h2 style="align-item-center">Books</h2>
             <table border="1" style="border-collapse: collapse;">
-                <caption>Book</caption>
                 <thead>
                     <th>Title</th>
                     <th>ISBN</th>
@@ -20,7 +21,7 @@
                 <tbody>
                 @foreach ($books as $book)
                 <tr>
-                    <td>{{$book->title}}</td>
+                    <td><a href="/book/{{$book->id}}">{{$book->title}}</a></td>
                     <td>{{$book->isbn}}</td>
                     <td>{{$book->description}}</td>
 
@@ -31,7 +32,7 @@
                             @endforeach
                         </ul>
                     </td>
-                   
+
                     <td>
                         <ul>
                             @foreach($book->genres as $b)
@@ -39,13 +40,17 @@
                             @endforeach
                         </ul>
                     </td>
+                    <script>
+                        $(document).ready()
+                    </script>
+
                     <td><a href="book/{{ $book->id }}/edit">Edit</a></td>
                     <td><a href="book/{{$book->id }}">Delete</a></td>
                 </tr>
-                
+
                 @endforeach
-                <p>This is me</p>
-               
+
+
                 </tbody>
             </table>
         </div>
